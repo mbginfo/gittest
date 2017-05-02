@@ -1,0 +1,294 @@
+https://git-scm.com/
+
+git init
+--------									
+creates a new Git repository.				
+Transforms the current directory into a Git repository. 
+
+
+git config --global user.name "Msluka"  
+--------------------------------------  			
+Creates global username
+
+
+git config --global user.email info@gmail.com  
+---------------------------------------------  		
+Sets global user email
+
+					the same can be done in local config or global .gitcongig file) 
+					
+					[user]
+					name = Msluka
+					email = info@gmail.com
+										
+git config --get user.name  -  These commands show you which username and email set for the repository.
+git config --get user.email
+
+git config --list  -  Shows info about Username, email and itc ...
+
+.gitconfig  -  is a file that is storred at: C:\Users\"PC UserName"
+
+git status  -  shows the state of the working directory and the staging area
+
+.gitignore  -   is a file which is created to store ignored folders or files.
+				1. create Text document ".gitignore"
+				2. open in editor and save as "all types". It will create a new file without name.
+				3. remove old file with the name ".gitignore".
+				4. "#" is used to include comments.
+				5. folder name and "/" - to ignore folder (Logs/)
+				6. "*" and file format - to ignore specific file type (*.txt)
+
+git status --tracked=all  -    tracked - a file which has been previously staged or committed;
+git status --untracked=all  -  a file which has not been staged or committed; 
+git status --ignored  -        a file which Git has been explicitly told to ignore.
+
+
+git add -A  -           stages All (git add --all)
+git add .  -            stages All (git add --all)
+git add -u  -           stages modified and deleted, without new (git add --update)
+git add "file name"  -  stages specific file (also can be done without "")
+git add "*.txt"  -      stages all files of this type
+
+
+git rm --cached "file name with extention"  -  to unstage file (git rm --cached "one/info.js"
+
+git commit  -  Editor will be open. Type "commit name" , ESC/:/x/Enter (Save and exit)
+               We can change editor:
+			   git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiinst -notabar -nosession -noPlugin"
+			   
+git commit -m "commit name"     
+git commit -a -m "commit name"  -  Records changes to the repository (from stag area - index)
+
+"--"   -  The special "option" -- means "treat every argument after this point as a file name, no matter what it looks like."
+       -  rm -f      # does nothing
+       -  rm -- -f   # deletes a file named "-f"
+	  
+git checkout -- filename  -  This will checkout the file from HEAD, overwriting your change. 
+
+git help
+
+git log  -  shows the history
+git help log  -  help for the log command
+git log --pretty=format:"%h - %an, %ar : %s"  - shows short log 
+                                              - %h: abbreviated commit hash 
+											  - %an: author name, 
+											  - %ar: author date, relative 
+											  - %ssubject
+
+git log -3  -  the command will display only the 3 most recent commits.
+get log --after="yesterday"
+git log --after="2017-04-30"
+git log --after="2017-04-30 13:50"
+
+git log --since=2.weeks
+
+git log --before="2017-04-30 13:50"
+
+git log --after="2017-04-30 13:50" --before="2017-04-30 13:55"
+
+git log --author="sluka"
+
+git log --author="John\|Mary  -  the command searches for commits by either Mary or John. (regular expressions)
+
+git log --grep="test"  -  Search By Message
+
+git log -- foo.PNG bar.txt  -  Search By File
+
+git log -S"Hello World"  -  Search By Content
+
+
+git log master..feature  -  The master..feature range contains all of the commits that are in the feature branch, 
+                            but aren’t in the master branch.
+							Note that if you switch the order of the range (feature..master), 
+							you will get all of the commits in master, but not in feature. 
+							If git log outputs commits for both versions, this tells you that your history has diverged.
+							
+
+git log --no-merges  -  You can prevent git log from displaying these merge commits 
+
+git log --merges      - if you’re only interested in the merge commits
+
+git log --oneline  -  condenses each commit to a single line. By default, it displays 
+                      only the commit ID and the first line of the commit message. 
+					  
+git log --oneline --decorate  -  any times it’s useful to know which branch or tag each commit is associated with. 
+                                 The --decorate flag makes git log display all of the references (e.g., branches, tags, etc) 
+								 that point to each commit.
+								 
+								 
+git log --stat  -  The --stat option displays the number of insertions and deletions to each file altered by each commit.
+
+git log -p      -  If you want to see the actual changes introduced by each commit, you can pass the -p option to git log.
+
+
+git shortlog  -  It groups each commit by author and displays the first line of each commit message.
+
+git log --graph --oneline --decorate  -  The --graph option draws an ASCII graph representing the branch structure 
+                                         of the commit history. This is commonly used in conjunction with the --oneline 
+										 and --decorate commands to make it easier to see which commit belongs to which branch.
+
+
+git branch first  -  creates new branch "first"
+										 
+git checkout -b "second"  -  creates new branch "second" and switches to that branch.
+
+git branch  -  Displays branches and the actual state
+
+git branch -v  -  The latest commit on the branches
+
+
+
+kdiff3  -  mergetool (install page: http://kdiff3.sourceforge.net/)
+						after installation
+						git config --global --add merge.tool kdiff3
+						git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+						git config --global --add mergetool.kdiff3.trustExitCode false
+
+						git config --global --add diff.guitool kdiff3
+						git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+						git config --global --add difftool.kdiff3.trustExitCode false
+						
+						or insert in .gitconfig
+						
+						[merge]
+							tool = kdiff3
+						[mergetool "kdiff3"]
+							path = C:/Program Files/KDiff3/kdiff3.exe
+							trustExitCode = false
+						[diff]
+							guitool = kdiff3
+						[difftool "kdiff3"]
+							path = C:/Program Files/KDiff3/kdiff3.exe
+							trustExitCode = false
+
+						or 
+						
+						git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'
+
+git merge master  -  the branch which will call the command will merge master branch
+git mergetool  -  calls mergetool
+
+git remote  -  displays remote repository
+git remote -v  -  displays remote repository and path 
+git push -u origin master
+
+git config --global push.default matching  -  all matched branches will be pushed
+ 
+	
+	See if there are any incoming changes
+git log HEAD..origin/master --oneline
+
+ 
+ 
+ ====
+ $ git diff <filename>  -  Shows difference between staged and unstaged file
+ 
+ eval `ssh-agent -s`  -   You need to start ssh-agent before you run the ssh-add command:
+ 
+ git ls-remote  - Tests connection and displays references available in a remote repository
+ 
+ 
+====
+
+git-gui  -  Show ssh key file in git bash
+			OpenSSH keeps them in ~/.ssh/ by default.
+			
+						
+ssh-keygen -t rsa -C "your-email-address"  -  Create a New SSH Key
+
+vim ~/.ssh/id_rsa_Lenovo-mbginfo.pub.
+
+
+
+
+ls -al ~/.ssh  - Checking for existing SSH keys
+ssh keygen -t rsa -b 4096 -C mbg.information@gmail.com
+====
+git branch --unset
+git branch -d
+git branch -D
+
+•git reset HEAD <plik> -wycofuje plik z poczekalni. Nie wycofuje zmian!
+•git checkout --<plik> -cofa zmany w zmodyfikowanym pliku
+•git revert <commit> -cofa zmiany z wybranego commitu, ale historia zmian zostaje (nie kasuje tamtego commita)
+•git reset <commit> -przesuwa czubek (HEAD) gałęzi na podany commit. Nasze zmiany zostają w folderze roboczym
+
+git fetch <zdalne_repozytoriun> <zdalny_branch>
+-to pobiera tylko lokalne kopie zdalnych repozytoriów. Następnie zmiany trzeba zmerge’ować:
+git merge <zdalne_repozytoriun> <zdalny_branch>
+Powyższe 2 komendy można zastąpić jedną
+git pull <zdalne_repozytoriun> <zdalny_branch>
+
+
+
+
+
+====
+
+	hevqmeni carieli uxilavi git papka
+git init
+
+	github momxmareblis saxeli
+git config user.name "mbginfo"
+
+	github momxmareblis emaili
+git config user.email mbg.information@gmail.com
+
+	shevqmnat axali ssh kay 
+ssh-keygen -t rsa -C "mbg.information@gmail.com"
+
+	axali gasagebis shenaxvisas gza mivutitod igive, saxels ki davamatod axali gasagebis saxeli
+
+.ssh/id_rsa_mbg (zveli)
+.ssh/id_rsa_mbg_newname (axali)
+
+	axali sheqmnili gasagebis kodi davakopirod da cahvsvat githubis saitze ssh kodis adgilas.
+	
+	es gasagebi aseve unda davamatod ssh terminalis sashualebit, amisatvis:
+	
+	gavxsnat agenti
+eval `ssh-agent -s`
+	da shemdeg davamatod
+ssh-add ~/.ssh/id_rsa_mbg
+
+	vqmnit config files, romelic sheiqmneba C:\Users\"PC UserName"\.ssh  foldershi
+touch ~/.ssh/config
+
+	am config failshi vcert:
+	
+#Default GitHub
+Host github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa
+
+Host github-mbg  //vucvlit saxels ise rogorc gvinda erqvas
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_mbg   //vsvavt axali gasagebis saxels
+
+
+	terminalshi vamatebt remote repositors axali ssh kavshiris saxelis (host)-is mixedvit
+
+git remote add origin git@github-mbg:mbginfo/gittest.git
+
+	gavtestavt kavshirs
+git ls-remote
+
+	shegvizlia pirveli pushis gaketeba
+git push -u origin master
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+

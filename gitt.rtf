@@ -1,0 +1,292 @@
+{\rtf1\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil Courier New;}}
+{\colortbl ;\red0\green0\blue255;\red0\green176\blue80;}
+{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
+\pard {\f0\fs22\lang2057{\field{\*\fldinst{HYPERLINK https://git-scm.com/ }}{\fldrslt{https://git-scm.com/\ul0\cf0}}}}\f0\fs22\par
+\par
+\cf2 git init\cf0\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab creates a new Git repository. \par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab Transform the current directory into a Git repository. \par
+\par
+git config --global user.name "Msluka"  -  \tab\tab\tab\tab\tab Creates global username\par
+\par
+git config --global user.email info@gmail.com  -  \tab\tab\tab Sets global user email\par
+\par
+\tab\tab\tab\tab\tab the same can be done in local config or global .gitcongig file) \par
+\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab [user]\par
+\tab\tab\tab\tab\tab name = Msluka\par
+\tab\tab\tab\tab\tab email = info@gmail.com\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\par
+git config --get user.name  -  These commands show you which username and email set for the repository.\par
+git config --get user.email\par
+\par
+git config --list  -  Shows info about Username, email and itc ...\par
+\par
+.gitconfig  -  is a file that is storred at: C:\\Users\\"PC UserName"\par
+\par
+git status  -  shows the state of the working directory and the staging area\par
+\par
+.gitignore  -   is a file which is created to store ignored folders or files.\par
+\tab\tab\tab\tab 1. create Text document ".gitignore"\par
+\tab\tab\tab\tab 2. open in editor and save as "all types". It will create a new file without name.\par
+\tab\tab\tab\tab 3. remove old file with the name ".gitignore".\par
+\tab\tab\tab\tab 4. "#" is used to include comments.\par
+\tab\tab\tab\tab 5. folder name and "/" - to ignore folder (Logs/)\par
+\tab\tab\tab\tab 6. "*" and file format - to ignore specific file type (*.txt)\par
+\par
+git status --tracked=all  -    tracked - a file which has been previously staged or committed;\par
+git status --untracked=all  -  a file which has not been staged or committed; \par
+git status --ignored  -        a file which Git has been explicitly told to ignore.\par
+\par
+\par
+git add -A  -           stages All (git add --all)\par
+git add .  -            stages All (git add --all)\par
+git add -u  -           stages modified and deleted, without new (git add --update)\par
+git add "file name"  -  stages specific file (also can be done without "")\par
+git add "*.txt"  -      stages all files of this type\par
+\par
+\par
+git rm --cached "file name with extention"  -  to unstage file (git rm --cached "one/info.js"\par
+\par
+git commit  -  Editor will be open. Type "commit name" , ESC/:/x/Enter (Save and exit)\par
+               We can change editor:\par
+\tab\tab\tab    git config --global core.editor "'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiinst -notabar -nosession -noPlugin"\par
+\tab\tab\tab    \par
+git commit -m "commit name"     \par
+git commit -a -m "commit name"  -  Records changes to the repository (from stag area - index)\par
+\par
+"--"   -  The special "option" -- means "treat every argument after this point as a file name, no matter what it looks like."\par
+       -  rm -f      # does nothing\par
+       -  rm -- -f   # deletes a file named "-f"\par
+\tab   \par
+git checkout -- filename  -  This will checkout the file from HEAD, overwriting your change. \par
+\par
+git help\par
+\par
+git log  -  shows the history\par
+git help log  -  help for the log command\par
+git log --pretty=format:"%h - %an, %ar : %s"  - shows short log \par
+                                              - %h: abbreviated commit hash \par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab   - %an: author name, \par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab   - %ar: author date, relative \par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab   - %ssubject\par
+\par
+git log -3  -  the command will display only the 3 most recent commits.\par
+get log --after="yesterday"\par
+git log --after="2017-04-30"\par
+git log --after="2017-04-30 13:50"\par
+\par
+git log --since=2.weeks\par
+\par
+git log --before="2017-04-30 13:50"\par
+\par
+git log --after="2017-04-30 13:50" --before="2017-04-30 13:55"\par
+\par
+git log --author="sluka"\par
+\par
+git log --author="John\\|Mary  -  the command searches for commits by either Mary or John. (regular expressions)\par
+\par
+git log --grep="test"  -  Search By Message\par
+\par
+git log -- foo.PNG bar.txt  -  Search By File\par
+\par
+git log -S"Hello World"  -  Search By Content\par
+\par
+\par
+git log master..feature  -  The master..feature range contains all of the commits that are in the feature branch, \par
+                            but aren\'e2\'80\'99t in the master branch.\par
+\tab\tab\tab\tab\tab\tab\tab Note that if you switch the order of the range (feature..master), \par
+\tab\tab\tab\tab\tab\tab\tab you will get all of the commits in master, but not in feature. \par
+\tab\tab\tab\tab\tab\tab\tab If git log outputs commits for both versions, this tells you that your history has diverged.\par
+\tab\tab\tab\tab\tab\tab\tab\par
+\par
+git log --no-merges  -  You can prevent git log from displaying these merge commits \par
+\par
+git log --merges      - if you\'e2\'80\'99re only interested in the merge commits\par
+\par
+git log --oneline  -  condenses each commit to a single line. By default, it displays \par
+                      only the commit ID and the first line of the commit message. \par
+\tab\tab\tab\tab\tab   \par
+git log --oneline --decorate  -  any times it\'e2\'80\'99s useful to know which branch or tag each commit is associated with. \par
+                                 The --decorate flag makes git log display all of the references (e.g., branches, tags, etc) \par
+\tab\tab\tab\tab\tab\tab\tab\tab  that point to each commit.\par
+\tab\tab\tab\tab\tab\tab\tab\tab  \par
+\tab\tab\tab\tab\tab\tab\tab\tab  \par
+git log --stat  -  The --stat option displays the number of insertions and deletions to each file altered by each commit.\par
+\par
+git log -p      -  If you want to see the actual changes introduced by each commit, you can pass the -p option to git log.\par
+\par
+\par
+git shortlog  -  It groups each commit by author and displays the first line of each commit message.\par
+\par
+git log --graph --oneline --decorate  -  The --graph option draws an ASCII graph representing the branch structure \par
+                                         of the commit history. This is commonly used in conjunction with the --oneline \par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab  and --decorate commands to make it easier to see which commit belongs to which branch.\par
+\par
+\par
+git branch first  -  creates new branch "first"\par
+\tab\tab\tab\tab\tab\tab\tab\tab\tab\tab  \par
+git checkout -b "second"  -  creates new branch "second" and switches to that branch.\par
+\par
+git branch  -  Displays branches and the actual state\par
+\par
+git branch -v  -  The latest commit on the branches\par
+\par
+\par
+\par
+kdiff3  -  mergetool (install page: {{\field{\*\fldinst{HYPERLINK http://kdiff3.sourceforge.net/ }}{\fldrslt{http://kdiff3.sourceforge.net/\ul0\cf0}}}}\f0\fs22 )\par
+\tab\tab\tab\tab\tab\tab after installation\par
+\tab\tab\tab\tab\tab\tab git config --global --add merge.tool kdiff3\par
+\tab\tab\tab\tab\tab\tab git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"\par
+\tab\tab\tab\tab\tab\tab git config --global --add mergetool.kdiff3.trustExitCode false\par
+\par
+\tab\tab\tab\tab\tab\tab git config --global --add diff.guitool kdiff3\par
+\tab\tab\tab\tab\tab\tab git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"\par
+\tab\tab\tab\tab\tab\tab git config --global --add difftool.kdiff3.trustExitCode false\par
+\tab\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab\tab or insert in .gitconfig\par
+\tab\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab\tab [merge]\par
+\tab\tab\tab\tab\tab\tab\tab tool = kdiff3\par
+\tab\tab\tab\tab\tab\tab [mergetool "kdiff3"]\par
+\tab\tab\tab\tab\tab\tab\tab path = C:/Program Files/KDiff3/kdiff3.exe\par
+\tab\tab\tab\tab\tab\tab\tab trustExitCode = false\par
+\tab\tab\tab\tab\tab\tab [diff]\par
+\tab\tab\tab\tab\tab\tab\tab guitool = kdiff3\par
+\tab\tab\tab\tab\tab\tab [difftool "kdiff3"]\par
+\tab\tab\tab\tab\tab\tab\tab path = C:/Program Files/KDiff3/kdiff3.exe\par
+\tab\tab\tab\tab\tab\tab\tab trustExitCode = false\par
+\par
+\tab\tab\tab\tab\tab\tab or \par
+\tab\tab\tab\tab\tab\tab\par
+\tab\tab\tab\tab\tab\tab git config --global mergetool.kdiff3.cmd '"C:\\\\Program Files\\\\KDiff3\\\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'\par
+\par
+git merge master  -  the branch which will call the command will merge master branch\par
+git mergetool  -  calls mergetool\par
+\par
+git remote  -  displays remote repository\par
+git remote -v  -  displays remote repository and path \par
+git push -u origin master\par
+\par
+git config --global push.default matching  -  all matched branches will be pushed\par
+ \par
+\tab\par
+\tab See if there are any incoming changes\par
+git log HEAD..origin/master --oneline\par
+\par
+ \par
+ \par
+ ====\par
+ $ git diff <filename>  -  Shows difference between staged and unstaged file\par
+ \par
+ eval `ssh-agent -s`  -   You need to start ssh-agent before you run the ssh-add command:\par
+ \par
+ git ls-remote  - Tests connection and displays references available in a remote repository\par
+ \par
+ \par
+====\par
+\par
+git-gui  -  Show ssh key file in git bash\par
+\tab\tab\tab OpenSSH keeps them in ~/.ssh/ by default.\par
+\tab\tab\tab\par
+\tab\tab\tab\tab\tab\tab\par
+ssh-keygen -t rsa -C "your-email-address"  -  Create a New SSH Key\par
+\par
+vim ~/.ssh/id_rsa_Lenovo-mbginfo.pub.\par
+\par
+\par
+\par
+\par
+ls -al ~/.ssh  - Checking for existing SSH keys\par
+ssh keygen -t rsa -b 4096 -C mbg.information@gmail.com\par
+====\par
+git branch --unset\par
+git branch -d\par
+git branch -D\par
+\par
+\'e2\'80\'a2git reset HEAD <plik> -wycofuje plik z poczekalni. Nie wycofuje zmian!\par
+\'e2\'80\'a2git checkout --<plik> -cofa zmany w zmodyfikowanym pliku\par
+\'e2\'80\'a2git revert <commit> -cofa zmiany z wybranego commitu, ale historia zmian zostaje (nie kasuje tamtego commita)\par
+\'e2\'80\'a2git reset <commit> -przesuwa czubek (HEAD) ga\'c5\'82\'c4\'99zi na podany commit. Nasze zmiany zostaj\'c4\'85 w folderze roboczym\par
+\par
+git fetch <zdalne_repozytoriun> <zdalny_branch>\par
+-to pobiera tylko lokalne kopie zdalnych repozytori\'c3\'b3w. Nast\'c4\'99pnie zmiany trzeba zmerge\'e2\'80\'99owa\'c4\f1\'87:\par
+git merge <zdalne_repozytoriun> <zdalny_branch>\par
+Powy\f0\'c5\'bcsze 2 komendy mo\'c5\'bcna zast\'c4\'85pi\'c4\f1\'87 jedn\f0\'c4\'85\par
+git pull <zdalne_repozytoriun> <zdalny_branch>\par
+\par
+\par
+\par
+\par
+\par
+====\par
+\par
+\tab hevqmeni carieli uxilavi git papka\par
+git init\par
+\par
+\tab github momxmareblis saxeli\par
+git config user.name "mbginfo"\par
+\par
+\tab github momxmareblis emaili\par
+git config user.email mbg.information@gmail.com\par
+\par
+\tab shevqmnat axali ssh kay \par
+ssh-keygen -t rsa -C "mbg.information@gmail.com"\par
+\par
+\tab axali gasagebis shenaxvisas gza mivutitod igive, saxels ki davamatod axali gasagebis saxeli\par
+\par
+.ssh/id_rsa_mbg (zveli)\par
+.ssh/id_rsa_mbg_newname (axali)\par
+\par
+\tab axali sheqmnili gasagebis kodi davakopirod da cahvsvat githubis saitze ssh kodis adgilas.\par
+\tab\par
+\tab es gasagebi aseve unda davamatod ssh terminalis sashualebit, amisatvis:\par
+\tab\par
+\tab gavxsnat agenti\par
+eval `ssh-agent -s`\par
+\tab da shemdeg davamatod\par
+ssh-add ~/.ssh/id_rsa_mbg\par
+\par
+\tab vqmnit config files, romelic sheiqmneba C:\\Users\\"PC UserName"\\.ssh  foldershi\par
+touch ~/.ssh/config\par
+\par
+\tab am config failshi vcert:\par
+\tab\par
+#Default GitHub\par
+Host github.com\par
+HostName github.com\par
+User git\par
+IdentityFile ~/.ssh/id_rsa\par
+\par
+Host github-mbg  //vucvlit saxels ise rogorc gvinda erqvas\par
+HostName github.com\par
+User git\par
+IdentityFile ~/.ssh/id_rsa_mbg   //vsvavt axali gasagebis saxels\par
+\par
+\par
+\tab terminalshi vamatebt remote repositors axali ssh kavshiris saxelis (host)-is mixedvit\par
+\par
+git remote add origin git@github-mbg:mbginfo/gittest.git\par
+\par
+\tab gavtestavt kavshirs\par
+git ls-remote\par
+\par
+\tab shegvizlia pirveli pushis gaketeba\par
+git push -u origin master\par
+\par
+\tab\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

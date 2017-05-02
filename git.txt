@@ -6,6 +6,11 @@ creates a new Git repository.
 Transforms the current directory into a Git repository. 
 
 
+git clone 
+---------
+creates a new git repository by copying an existing one located at the URI you specify.
+
+
 git config --global user.name "Msluka"  
 --------------------------------------  			
 Creates global username
@@ -289,6 +294,11 @@ git remote -v
 displays remote repository and path 
 
 
+git ls-remote
+------------- 
+displays references available in a remote repository and tests connection 
+
+
 git push -u origin master
 -------------------------
 Pushs commits to the remote branch
@@ -300,19 +310,92 @@ git push -f
 	force pushing will overwrite the remote branch with the state of the branch that you're pushing.
 
 
- 
-	
-	See if there are any incoming changes
 git log HEAD..origin/master --oneline
+-------------------------------------
+	See if there are any incoming changes
 
  
- 
+ $ git diff <filename>
+ ---------------------
+	Shows difference between staged and unstaged file 
+	
+	
+Multiple Accounts
+=================
+Create a second guthub user on the same PC
+using SSH key
+------------------------------------------
+
+
+1. create a new empty repository
+
+	git init
+
+2. Set Username	
+
+	git config user.name "msluka"
+	
+3. Set Email
+
+	git config user.email info@gmail.com
+	
+
+4. Create a new ssh key
+
+	ssh-keygen -t rsa -C "info@gmail.com"
+	
+		Give new name to the new key (the path to the key will be the same)
+	
+	.ssh/id_rsa (existing)
+	.ssh/id_rsa_newname (new)
+
+5. Copy and add new SSH Key to your user on github.com
+
+6. Open a connection to your authentication agent
+
+	eval `ssh-agent -s`
+	
+7. Execute command within the Terminal:
+
+	ssh-add ~/.ssh/id_rsa_newname 
+	
+		If successful, you'll see a response of "Identity Added."
+
+8. Create a config file.
+
+	touch ~/.ssh/config
+
+		It will be created in the .ssh folder at: C:\Users\"PC UserName"\.ssh  
+
+9. Edit SSH config file with your accounts information
+	
+	#Default GitHub
+	Host github.com
+	HostName github.com  
+	User git 
+	IdentityFile ~/.ssh/id_rsa
+
+	
+	Host github-new      				//new user
+	HostName github.com	 				//don't change this
+	User git 							
+	IdentityFile ~/.ssh/id_rsa_new   	//new key
+
+10. Create an entry in your git config 
+
+	git remote add origin git@github-new:yourGitHubUserName/yourRemository.git
+
+11. Test Connection 
+
+	git ls-remote
+
+12. Ready to push
+
+	git push -u origin master
+
+
  ====
- $ git diff <filename>  -  Shows difference between staged and unstaged file
- 
- eval `ssh-agent -s`  -   You need to start ssh-agent before you run the ssh-add command:
- 
- git ls-remote  - Tests connection and displays references available in a remote repository
+
  
  
 ====

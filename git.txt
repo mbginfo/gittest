@@ -41,6 +41,11 @@ git config --list
 Shows info about username, email and itc.
 
 
+git config --global push.default matching
+-----------------------------------------
+all matched branches will be pushed
+
+
 .gitignore    
 ----------
 is a file which is created to store ignored folders or files.
@@ -234,42 +239,67 @@ git branch -v
 	The latest commit on the branches
 
 
+git mergetool  
+-------------  
+	calls mergetool in the case of conflicts.
+	default mergetool can be replaced
 
-kdiff3  -  mergetool (install page: http://kdiff3.sourceforge.net/)
-						after installation
-						git config --global --add merge.tool kdiff3
-						git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
-						git config --global --add mergetool.kdiff3.trustExitCode false
+		kdiff3  -  mergetool (install page: http://kdiff3.sourceforge.net/)
+		
+		after installation:
+		
+		git config --global --add merge.tool kdiff3
+		git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+		git config --global --add mergetool.kdiff3.trustExitCode false
 
-						git config --global --add diff.guitool kdiff3
-						git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
-						git config --global --add difftool.kdiff3.trustExitCode false
-						
-						or insert in .gitconfig
-						
-						[merge]
-							tool = kdiff3
-						[mergetool "kdiff3"]
-							path = C:/Program Files/KDiff3/kdiff3.exe
-							trustExitCode = false
-						[diff]
-							guitool = kdiff3
-						[difftool "kdiff3"]
-							path = C:/Program Files/KDiff3/kdiff3.exe
-							trustExitCode = false
+		git config --global --add diff.guitool kdiff3
+		git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+		git config --global --add difftool.kdiff3.trustExitCode false
+		
+		or insert in .gitconfig
+		
+		[merge]
+			tool = kdiff3
+		[mergetool "kdiff3"]
+			path = C:/Program Files/KDiff3/kdiff3.exe
+			trustExitCode = false
+		[diff]
+			guitool = kdiff3
+		[difftool "kdiff3"]
+			path = C:/Program Files/KDiff3/kdiff3.exe
+			trustExitCode = false
 
-						or 
-						
-						git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'
+		or 
+		
+		git config --global mergetool.kdiff3.cmd '"C:\\Program Files\\KDiff3\\kdiff3" $BASE $LOCAL $REMOTE -o $MERGED'
 
-git merge master  -  the branch which will call the command will merge master branch
-git mergetool  -  calls mergetool
+		
+git merge master 
+---------------- 
+	The branch which will call the command will merge master branch
+	
 
-git remote  -  displays remote repository
-git remote -v  -  displays remote repository and path 
+git remote
+----------  
+displays remote repository
+
+
+git remote -v 
+--------------
+displays remote repository and path 
+
+
 git push -u origin master
+-------------------------
+Pushs commits to the remote branch
 
-git config --global push.default matching  -  all matched branches will be pushed
+
+git push origin master -f 
+git push -f
+-------------------------
+	force pushing will overwrite the remote branch with the state of the branch that you're pushing.
+
+
  
 	
 	See if there are any incoming changes

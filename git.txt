@@ -71,7 +71,7 @@ stages All = (git add --all)
 git add -A             			stages All = (git add --all)
 git add -u  	          		stages modified and deleted, without new (git add --update)
 git add "file name"  	  		stages specific file (also can be done without "")
-git add "*.txt"  				stages all files of this type
+git add "*.txt"					stages all files of this type
 
 
 git rm --cached "file name with extention"  

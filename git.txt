@@ -332,6 +332,7 @@ Multiple Accounts
 =================
 Create a second guthub user on the same PC
 using SSH key
+https://www.youtube.com/watch?v=fnSRBRiQIU8
 ------------------------------------------
 
 
@@ -406,61 +407,63 @@ using SSH key
  
 git gui 
 -------
-calls GUI client
+	calls GUI client
 
 
 ls -al ~/.ssh
 -------------
-Checking for existing SSH keys
+	Checking for existing SSH keys
+
 
 cat
 ---
-reads file
+	reads file
 
-e.g. cat git.txt
+	e.g. cat git.txt
 
 
 sed 
 ---
-edits text
+	edits text
 
-e.g. sed 's/hello/hi/g' -i test.txt
+	e.g. sed 's/hello/hi/g' -i test.txt
 
-hello will be changed with hi in test.txt file.
+	hello will be changed with hi in test.txt file.
 
 
-git show <commit number, first 4 digits>
+git show <commit, first 4 digits>
 ----------------------------------------
-Dysplays what were changed with this commit
-e.g. git show f41a
+	Dysplays what were changed with this commit
+	e.g. git show f41a
 
-git revert <commit number>
+	
+git revert <commit>
 --------------------------
-Reverts commit
-e.g. git revert f41a
+	Reverts commit (get back, do not remove commit)
+	e.g. git revert f41a
+	
+
+git reset <commit> 
+------------------
+	git reset is a simple way to undo changes that haven’t been shared with anyone else. 
+	
+
+git reset HEAD <file> 
+---------------------
+	get back the file from HEAD but keep changes
+
+	
+	
+
+git fetch 
+---------
++ 
+git merge origni master
+----------------------- 
+=
+git pull
 
 
-
-
-====
-
-
-•git reset HEAD <plik> -wycofuje plik z poczekalni. Nie wycofuje zmian!
-•git checkout --<plik> -cofa zmany w zmodyfikowanym pliku
-•git revert <commit> -cofa zmiany z wybranego commitu, ale historia zmian zostaje (nie kasuje tamtego commita)
-•git reset <commit> -przesuwa czubek (HEAD) gałęzi na podany commit. Nasze zmiany zostają w folderze roboczym
-
-git fetch <zdalne_repozytoriun> <zdalny_branch>
--to pobiera tylko lokalne kopie zdalnych repozytoriów. Następnie zmiany trzeba zmerge’ować:
-git merge <zdalne_repozytoriun> <zdalny_branch>
-Powyższe 2 komendy można zastąpić jedną
-git pull <zdalne_repozytoriun> <zdalny_branch>
-
-
-
-
-
-====
 
 
 

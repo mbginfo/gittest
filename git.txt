@@ -242,6 +242,14 @@ git checkout test
 git branch -v
 -------------
 	The latest commit on the branches
+	
+git branch -d <branch_name>
+---------------------------
+	Delete local branch
+
+git push origin --delete <branch_name>
+--------------------------------------
+	Delete remote branch
 
 
 git mergetool  
@@ -393,30 +401,49 @@ using SSH key
 
 	git push -u origin master
 
-
- ====
+=================
 
  
- 
+git gui 
+-------
+calls GUI client
+
+
+ls -al ~/.ssh
+-------------
+Checking for existing SSH keys
+
+cat
+---
+reads file
+
+e.g. cat git.txt
+
+
+sed 
+---
+edits text
+
+e.g. sed 's/hello/hi/g' -i test.txt
+
+hello will be changed with hi in test.txt file.
+
+
+git show <commit number, first 4 digits>
+----------------------------------------
+Dysplays what were changed with this commit
+e.g. git show f41a
+
+git revert <commit number>
+--------------------------
+Reverts commit
+e.g. git revert f41a
+
+
+
+
 ====
 
-git-gui  -  Show ssh key file in git bash
-			OpenSSH keeps them in ~/.ssh/ by default.
-			
-						
-ssh-keygen -t rsa -C "your-email-address"  -  Create a New SSH Key
-
-vim ~/.ssh/id_rsa_Lenovo-mbginfo.pub.
-
-
-
-
-ls -al ~/.ssh  - Checking for existing SSH keys
-ssh keygen -t rsa -b 4096 -C mbg.information@gmail.com
-====
-git branch --unset
-git branch -d
-git branch -D
 
 •git reset HEAD <plik> -wycofuje plik z poczekalni. Nie wycofuje zmian!
 •git checkout --<plik> -cofa zmany w zmodyfikowanym pliku
@@ -435,58 +462,7 @@ git pull <zdalne_repozytoriun> <zdalny_branch>
 
 ====
 
-	hevqmeni carieli uxilavi git papka
-git init
 
-	github momxmareblis saxeli
-git config user.name "mbginfo"
-
-	github momxmareblis emaili
-git config user.email mbg.information@gmail.com
-
-	shevqmnat axali ssh kay 
-ssh-keygen -t rsa -C "mbg.information@gmail.com"
-
-	axali gasagebis shenaxvisas gza mivutitod igive, saxels ki davamatod axali gasagebis saxeli
-
-.ssh/id_rsa_mbg (zveli)
-.ssh/id_rsa_mbg_newname (axali)
-
-	axali sheqmnili gasagebis kodi davakopirod da cahvsvat githubis saitze ssh kodis adgilas.
-	
-	es gasagebi aseve unda davamatod ssh terminalis sashualebit, amisatvis:
-	
-	gavxsnat agenti
-eval `ssh-agent -s`
-	da shemdeg davamatod
-ssh-add ~/.ssh/id_rsa_mbg
-
-	vqmnit config files, romelic sheiqmneba C:\Users\"PC UserName"\.ssh  foldershi
-touch ~/.ssh/config
-
-	am config failshi vcert:
-	
-#Default GitHub
-Host github.com
-HostName github.com
-User git
-IdentityFile ~/.ssh/id_rsa
-
-Host github-mbg  //vucvlit saxels ise rogorc gvinda erqvas
-HostName github.com
-User git
-IdentityFile ~/.ssh/id_rsa_mbg   //vsvavt axali gasagebis saxels
-
-
-	terminalshi vamatebt remote repositors axali ssh kavshiris saxelis (host)-is mixedvit
-
-git remote add origin git@github-mbg:mbginfo/gittest.git
-
-	gavtestavt kavshirs
-git ls-remote
-
-	shegvizlia pirveli pushis gaketeba
-git push -u origin master
 
 	
 

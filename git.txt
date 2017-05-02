@@ -445,7 +445,8 @@ git revert <commit>
 
 git reset <commit> 
 ------------------
-	git reset is a simple way to undo changes that haven’t been shared with anyone else. 
+	git reset is a simple way to undo changes that haven’t been shared with anyone else.
+	get back the file from commit in working directory.
 	
 
 git reset HEAD <file> 

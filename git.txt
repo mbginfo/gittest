@@ -15,39 +15,63 @@ git config --global user.email info@gmail.com
 ---------------------------------------------  		
 Sets global user email
 
-					the same can be done in local config or global .gitcongig file) 
+										The same can be done in local <config> or in global <.gitcongig> file: 
 					
-					[user]
-					name = Msluka
-					email = info@gmail.com
+										[user]
+										name = Msluka
+										email = info@gmail.com
 										
-git config --get user.name  -  These commands show you which username and email set for the repository.
+										config
+										------
+										is a file that is stored in git hidden folder.
+										
+										.gitconfig 
+										----------
+										is a file that is stored at: C:\Users\"YourUserName"
+										
+										
+git config --get user.name  
 git config --get user.email
-
-git config --list  -  Shows info about Username, email and itc ...
-
-.gitconfig  -  is a file that is storred at: C:\Users\"PC UserName"
-
-git status  -  shows the state of the working directory and the staging area
-
-.gitignore  -   is a file which is created to store ignored folders or files.
-				1. create Text document ".gitignore"
-				2. open in editor and save as "all types". It will create a new file without name.
-				3. remove old file with the name ".gitignore".
-				4. "#" is used to include comments.
-				5. folder name and "/" - to ignore folder (Logs/)
-				6. "*" and file format - to ignore specific file type (*.txt)
-
-git status --tracked=all  -    tracked - a file which has been previously staged or committed;
-git status --untracked=all  -  a file which has not been staged or committed; 
-git status --ignored  -        a file which Git has been explicitly told to ignore.
+---------------------------
+These commands show you which username and email are set for the repository.
 
 
-git add -A  -           stages All (git add --all)
-git add .  -            stages All (git add --all)
-git add -u  -           stages modified and deleted, without new (git add --update)
-git add "file name"  -  stages specific file (also can be done without "")
-git add "*.txt"  -      stages all files of this type
+git config --list 
+-----------------
+Shows info about username, email and itc.
+
+
+.gitignore    
+----------
+is a file which is created to store ignored folders or files.
+
+										1. Create Text document ".gitignore"
+										2. Open it in an editor and save in format "all types". 
+										   It will create a new file without name.
+										3. Remove old file with the name ".gitignore".
+										4. "#" is used to include comments.
+										5. To ignore a folder: Folder name and "/" 
+										   exp: Logs/
+										6. To ignore a specific file type: "*" and file format 
+										   exp: *.txt
+
+										   
+git status
+----------  
+Shows the state of the working directory and the staging area
+								   
+git status --untracked=all  			Shows a file which has not been staged or committed.
+git status --ignored  					Shows a file which Git has been explicitly told to ignore.
+
+
+git add .  
+---------           
+stages All = (git add --all)
+
+git add -A             					stages All = (git add --all)
+git add -u  	          				stages modified and deleted, without new (git add --update)
+git add "file name"  	  				stages specific file (also can be done without "")
+git add "*.txt"  					    stages all files of this type
 
 
 git rm --cached "file name with extention"  -  to unstage file (git rm --cached "one/info.js"

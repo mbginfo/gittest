@@ -88,30 +88,60 @@ git commit (without -m)
 Default Editor will be open. 
 Type "commit name" , ESC/:/x/Enter (Save and exit)
                
-					We can change default editor:
-					git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' 
-					-multiinst -notabar -nosession -noPlugin"
+			We can change default editor:
+			
+			git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' 
+			-multiinst -notabar -nosession -noPlugin"
 			   
-git commit -m "commit name"     
-git commit -a -m "commit name"  -  Records changes to the repository (from stag area - index)
+     
+git commit -a -m "commit name"
+------------------------------
+adds and commits
 
-"--"   -  The special "option" -- means "treat every argument after this point as a file name, no matter what it looks like."
-       -  rm -f      # does nothing
-       -  rm -- -f   # deletes a file named "-f"
+
+"--"     
+----
+The special "option" -- means "treat every argument after this point as a file name, 
+no matter what it looks like."
+		  
+		  e.g.
+		  rm -f      # does nothing
+          rm -- -f   # deletes a file named "-f"
 	  
-git checkout -- filename  -  This will checkout the file from HEAD, overwriting your change. 
+git checkout -- filename   
+------------------------
+This will checkout the file from HEAD, overwriting your change. 
+
 
 git help
+--------
+Shows help
 
-git log  -  shows the history
-git help log  -  help for the log command
-git log --pretty=format:"%h - %an, %ar : %s"  - shows short log 
-                                              - %h: abbreviated commit hash 
-											  - %an: author name, 
-											  - %ar: author date, relative 
-											  - %ssubject
 
-git log -3  -  the command will display only the 3 most recent commits.
+git log  
+-------  
+Shows the history
+
+
+git help log
+------------                                    
+help for the log command
+
+
+git log --pretty=format:"%h - %an, %ar : %s"    
+--------------------------------------------
+shows short log 
+			%h: abbreviated commit hash 
+			%an: author name, 
+			%ar: author date, relative 
+			%ssubject
+
+			
+git log -3  
+----------
+the command will display only the 3 most recent commits.
+
+
 get log --after="yesterday"
 git log --after="2017-04-30"
 git log --after="2017-04-30 13:50"
@@ -122,55 +152,86 @@ git log --before="2017-04-30 13:50"
 
 git log --after="2017-04-30 13:50" --before="2017-04-30 13:55"
 
-git log --author="sluka"
+git log --author="Msluka"			Search By Author
 
-git log --author="John\|Mary  -  the command searches for commits by either Mary or John. (regular expressions)
+git log --author="John\|Mary        Searches for commits by either Mary or John. (regular expressions)
 
-git log --grep="test"  -  Search By Message
+git log --grep="test"               Search By Message
 
-git log -- foo.PNG bar.txt  -  Search By File
+git log -- foo.PNG bar.txt          Search By File
 
-git log -S"Hello World"  -  Search By Content
+git log -S"Hello World"             Search By Content
 
 
-git log master..feature  -  The master..feature range contains all of the commits that are in the feature branch, 
-                            but aren’t in the master branch.
-							Note that if you switch the order of the range (feature..master), 
-							you will get all of the commits in master, but not in feature. 
-							If git log outputs commits for both versions, this tells you that your history has diverged.
+git log master..feature    
+-----------------------
+	The master..feature range contains all of the commits that are in the feature branch, 
+	but aren’t in the master branch.
+	Note that if you switch the order of the range (feature..master), 
+	you will get all of the commits in master, but not in feature. 
+	If git log outputs commits for both versions, this tells you that your history has diverged.
 							
 
-git log --no-merges  -  You can prevent git log from displaying these merge commits 
+git log --no-merges			You can prevent git log from displaying these merge commits 
 
-git log --merges      - if you’re only interested in the merge commits
+git log --merges      	 	if you’re only interested in the merge commits
 
-git log --oneline  -  condenses each commit to a single line. By default, it displays 
-                      only the commit ID and the first line of the commit message. 
+
+git log --oneline 
+-----------------   
+	condenses each commit to a single line. By default, it displays 
+	only the commit ID and the first line of the commit message. 
 					  
-git log --oneline --decorate  -  any times it’s useful to know which branch or tag each commit is associated with. 
-                                 The --decorate flag makes git log display all of the references (e.g., branches, tags, etc) 
-								 that point to each commit.
+git log --oneline --decorate  
+---------------------------- 
+	any times it’s useful to know which branch or tag each commit is associated with. 
+	The --decorate flag makes git log display all of the references (e.g., branches, tags, etc) 
+	that point to each commit.
+	
+git log --graph --oneline --decorate    
+------------------------------------
+	The --graph option draws an ASCII graph representing the branch structure 
+	of the commit history. This is commonly used in conjunction with the --oneline 
+	and --decorate commands to make it easier to see which commit belongs to which branch.
 								 
 								 
-git log --stat  -  The --stat option displays the number of insertions and deletions to each file altered by each commit.
-
-git log -p      -  If you want to see the actual changes introduced by each commit, you can pass the -p option to git log.
-
-
-git shortlog  -  It groups each commit by author and displays the first line of each commit message.
-
-git log --graph --oneline --decorate  -  The --graph option draws an ASCII graph representing the branch structure 
-                                         of the commit history. This is commonly used in conjunction with the --oneline 
-										 and --decorate commands to make it easier to see which commit belongs to which branch.
+git log --stat
+--------------
+	The --stat option displays the number of insertions and deletions to each file altered by each commit.
 
 
-git branch first  -  creates new branch "first"
-										 
-git checkout -b "second"  -  creates new branch "second" and switches to that branch.
+git log -p
+----------
+	If you want to see the actual changes introduced by each commit, you can pass the -p option to git log.
 
-git branch  -  Displays branches and the actual state
 
-git branch -v  -  The latest commit on the branches
+git shortlog
+------------
+	It groups each commit by author and displays the first line of each commit message.
+
+
+
+
+git branch test
+---------------  
+	creates new branch "test"
+								
+								
+git checkout -b "test"
+----------------------
+	creates new branch "test" and switches to that branch.
+
+git branch
+----------
+	Displays branches and the actual state
+
+git checkout test
+----------------------	
+	Switches to branch "test"
+
+git branch -v
+-------------
+	The latest commit on the branches
 
 
 

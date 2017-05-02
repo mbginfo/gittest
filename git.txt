@@ -15,19 +15,19 @@ git config --global user.email info@gmail.com
 ---------------------------------------------  		
 Sets global user email
 
-										The same can be done in local <config> or in global <.gitcongig> file: 
+					The same can be done in local <config> or in global <.gitcongig> file: 
+
+					[user]
+					name = Msluka
+					email = info@gmail.com
 					
-										[user]
-										name = Msluka
-										email = info@gmail.com
-										
-										config
-										------
-										is a file that is stored in git hidden folder.
-										
-										.gitconfig 
-										----------
-										is a file that is stored at: C:\Users\"YourUserName"
+					config
+					------
+					is a file that is stored in git hidden folder.
+					
+					.gitconfig 
+					----------
+					is a file that is stored at: C:\Users\"YourUserName"
 										
 										
 git config --get user.name  
@@ -45,33 +45,33 @@ Shows info about username, email and itc.
 ----------
 is a file which is created to store ignored folders or files.
 
-										1. Create Text document ".gitignore"
-										2. Open it in an editor and save in format "all types". 
-										   It will create a new file without name.
-										3. Remove old file with the name ".gitignore".
-										4. "#" is used to include comments.
-										5. To ignore a folder: Folder name and "/" 
-										   exp: Logs/
-										6. To ignore a specific file type: "*" and file format 
-										   exp: *.txt
+					1. Create Text document ".gitignore"
+					2. Open it in an editor and save in format "all types". 
+					   It will create a new file without name.
+					3. Remove old file with the name ".gitignore".
+					4. "#" is used to include comments.
+					5. To ignore a folder: Folder name and "/" 
+					   exp: Logs/
+					6. To ignore a specific file type: "*" and file format 
+					   exp: *.txt
 
 										   
 git status
 ----------  
 Shows the state of the working directory and the staging area
 								   
-git status --untracked=all  			Shows a file which has not been staged or committed.
-git status --ignored  					Shows a file which Git has been explicitly told to ignore.
+git status --untracked=all  	Shows a file which has not been staged or committed.
+git status --ignored  			Shows a file which Git has been explicitly told to ignore.
 
 
 git add .  
 ---------           
 stages All = (git add --all)
 
-git add -A             					stages All = (git add --all)
-git add -u  	          				stages modified and deleted, without new (git add --update)
-git add "file name"  	  				stages specific file (also can be done without "")
-git add "*.txt"  					    stages all files of this type
+git add -A             			stages All = (git add --all)
+git add -u  	          		stages modified and deleted, without new (git add --update)
+git add "file name"  	  		stages specific file (also can be done without "")
+git add "*.txt"  				stages all files of this type
 
 
 git rm --cached "file name with extention"  -  to unstage file (git rm --cached "one/info.js"

@@ -51,9 +51,9 @@ is a file which is created to store ignored folders or files.
 					3. Remove old file with the name ".gitignore".
 					4. "#" is used to include comments.
 					5. To ignore a folder: Folder name and "/" 
-					   exp: Logs/
+					   e.g. Logs/
 					6. To ignore a specific file type: "*" and file format 
-					   exp: *.txt
+					   e.g. *.txt
 
 										   
 git status
@@ -74,11 +74,23 @@ git add "file name"  	  		stages specific file (also can be done without "")
 git add "*.txt"  				stages all files of this type
 
 
-git rm --cached "file name with extention"  -  to unstage file (git rm --cached "one/info.js"
+git rm --cached "file name with extention"  
+------------------------------------------
+to unstage file (e.g. it rm --cached "one/info.js")
 
-git commit  -  Editor will be open. Type "commit name" , ESC/:/x/Enter (Save and exit)
-               We can change editor:
-			   git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' -multiinst -notabar -nosession -noPlugin"
+
+git commit -m "commit name"
+---------------------------
+commits the staged snapshot to the project history
+
+git commit (without -m) 
+-----------------------
+Default Editor will be open. 
+Type "commit name" , ESC/:/x/Enter (Save and exit)
+               
+					We can change default editor:
+					git config --global core.editor "'C:\Program Files (x86)\Notepad++\notepad++.exe' 
+					-multiinst -notabar -nosession -noPlugin"
 			   
 git commit -m "commit name"     
 git commit -a -m "commit name"  -  Records changes to the repository (from stag area - index)

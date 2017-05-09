@@ -1,0 +1,174 @@
+When we add controller it creates also a folder in Views folder with the same name as new created conntroller.
+
+In approppriate Views folder we have to create View, which will be cshtml = raizor view
+
+Razor is an ASP.NET programming syntax used to create dynamic web pages with the C# or Visual Basic .NET programming languages.
+Razor syntax starts code blocks with a @ character and does not require explicit closing of the code-block.
+
+if View name = Controler ActionResult Name, We do not need to insert View Name in return View();
+
+Routing
+-------
+App_Start / RouteConfig.cs
+
+	"routes.MapRoute" name can not be repeated
+
+	If "routes.MapRoute" url will be remaind empty "", this Map.Route will be called if in browser 
+	will not be calld any controller. It will be like home page.
+	
+		
+	routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+	
+	
+	
+	"routes.IgnoreRoute" we can put what we want to be ignored
+	
+	routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+	
+	
+SEO
+Search Engine optimization
+
+	Routing is fine to create different url with the same controller and this url will be used by SEO.
+
+	
+	
+ViewBag and ViewData
+--------------------
+	They pass data from Controller to View.
+	ViewBag simplifies ViewData syntax and it uses dynamic keyword of .net
+	
+ViewData
+--------
+	In controller ActionResult
+	--------------------------
+	ViewData["key1"]="some data";
+
+	In View
+    -------
+	@ViewData["key1"]
+	
+	
+ViewBag
+-------	
+	In controller ActionResult           
+	--------------------------
+	ViewBag.key1="some data";
+
+	In View
+    -------
+	@ViewBag.key1
+	
+
+TempData 
+--------
+Passes data from action to another action.
+
+
+	In Controller
+
+		public ActionResult SampleView()
+        {
+            TempData["CurrentDateAndTime"] = DateTime.Now;
+            return RedirectToAction("SampleView1");
+        }
+
+        public ActionResult SampleView1()
+        {
+            string str = TempData["CurrentDateAndTime"].ToString();
+            return View("SampleView");
+        }
+	
+	In View
+	
+		<div>
+			@TempData["CurrentDateAndTime"]
+		</div>
+		
+
+Session
+-------
+Passes data from Controller to View or from action to another action.
+
+		
+	In Controller
+
+		public ActionResult SampleView()
+        {
+            Session["CurrentDateAndTime"] = DateTime.Now;
+            return RedirectToAction("SampleView1");
+
+        }
+
+        public ActionResult SampleView1()
+        {
+            string str = Session["CurrentDateAndTime"].ToString();
+            return View("SampleView");
+        }
+	
+	In View
+	
+		<div>
+			@Session["CurrentDateAndTime"]
+		</div>
+		
+Model / Form /Request
+
+Model
+-----
+
+	public class Customer
+    {
+        public int Id { get; set; }
+        public string CustomerCode { get; set; }
+        public double Amount { get; set; }
+    }
+	
+Form (in FillCustomer View)
+----
+
+	<form action="DisplayCustomer" method="post">
+        Customer Id: <input type="text" name="CustomerId"/><br/>
+        Customer Code: <input type="text" name="CustomerCode" /><br />
+        Amount: <input type="text" name="Amount"/><br />
+        <input type="submit" value="Click Here"/><br/>
+    </form>
+  
+Request (from Customer Controller)
+-------
+
+	public ActionResult DisplayCustomer()
+        {
+            Customer obj = new Customer();
+            obj.Id = Convert.ToInt32(Request.Form["CustomerId"]);
+            obj.CustomerCode = Request.Form["CustomerCode"].ToString();
+            obj.Amount = Convert.ToDouble(Request.Form["Amount"]);
+            
+            return View(obj);
+        }
+ 
+Display View
+------------
+
+	<div>
+		
+		Customer Id is: @Model.Id<br/>
+		Customer Code is: @Model.CustomerCode <br/>
+		@if (Model.Amount > 100)
+		{
+			<span>This is VIP Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+		else
+		{
+			<span>This is usual Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+
+	</div>
+
+

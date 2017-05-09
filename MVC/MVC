@@ -3,6 +3,7 @@ When we add controller it creates also a folder in Views folder with the same na
 In approppriate Views folder we have to create View, which will be cshtml = raizor view
 
 Razor is an ASP.NET programming syntax used to create dynamic web pages with the C# or Visual Basic .NET programming languages.
+Razor is a simple-syntax view engine.
 Razor syntax starts code blocks with a @ character and does not require explicit closing of the code-block.
 
 if View name = Controler ActionResult Name, We do not need to insert View Name in return View();

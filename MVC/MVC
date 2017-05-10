@@ -172,4 +172,66 @@ Display View
 
 	</div>
 
+	
+Display View
+------------
+
+	<div>
+		
+		Customer Id is: @Model.Id<br/>
+		Customer Code is: @Model.CustomerCode <br/>
+		@if (Model.Amount > 100)
+		{
+			<span>This is VIP Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+		else
+		{
+			<span>This is usual Customer and Amount is:</span>
+			<span>@Model.Amount</span>
+		}
+
+	</div>
+	
+
+HTML Helpers
+------------
+	http://www.tutorialsteacher.com/mvc/htmlhelper-textbox-textboxfor
+	
+	HtmlHelper class generates html elements using the model class object in razor view. 
+	It binds the model object to html elements to display value of model properties into html elements 
+	and also assigns the value of the html elements to the model properties while submitting web form. 
+	So always use HtmlHelper class in razor view instead of writing html tags manually.
+	
+	@Html is an object of HtmlHelper class . (@ symbol is used to access server side object in razor syntax). 
+	Html is a property of type HtmlHelper included in base class of razor view WebViewPage. 
+	ActionLink() and DisplayNameFor() is extension methods included in HtmlHelper class.
+	HtmlHelper extension method generates html elements based on model properties.
+	
+	For example, @Html.ActionLink("Create New", "Create") would generate 
+	anchor tag <a href="/Somemodel/Create">Create New</a>.
+	
+	
+	HtmlHelper				Strogly Typed HtmlHelpers		Html Control
+	----------         		------------------------- 		------------
+	Html.ActionLink			Anchor link
+	Html.TextBox			Html.TextBoxFor					Textbox
+	Html.TextArea			Html.TextAreaFor				TextArea
+	Html.CheckBox			Html.CheckBoxFor				Checkbox
+	Html.RadioButton		Html.RadioButtonFor				Radio button
+	Html.DropDownList		Html.DropDownListFor			Dropdown, combobox
+	Html.ListBox			Html.ListBoxFor					multi-select list box
+	Html.Hidden				Html.HiddenFor					Hidden field
+	Password				Html.PasswordFor				Password textbox
+	Html.Display			Html.DisplayFor					Html text
+	Html.Label				Html.LabelFor					Label
+	Html.Editor				Html.EditorFor					Generates Html controls based 
+															on data type of specified model 
+															property e.g. textbox for string 
+															property, numeric field for int, 
+															double or other numeric type.
+	
+	
+	The difference between calling the HtmlHelper methods and using an html tags is that 
+	the HtmlHelper method is designed to make it easy to bind to view data or model data.
 

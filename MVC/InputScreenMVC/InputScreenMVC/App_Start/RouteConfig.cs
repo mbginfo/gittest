@@ -16,7 +16,9 @@ namespace InputScreenMVC
             routes.MapRoute(
                 name: "Show",
                 url: "Customer/Display/{id}",
-                defaults: new { controller = "Customer", action = "DisplayCustomer", id=0});
+                //defaults: new { controller = "Customer", action = "DisplayCustomer", id = 0 }
+                defaults: new { controller = "Customer", action = "DisplayCustomer" }
+                );
 
 
             routes.MapRoute(

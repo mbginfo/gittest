@@ -8,6 +8,7 @@ Razor syntax starts code blocks with a @ character and does not require explicit
 
 if View name = Controler ActionResult Name, We do not need to insert View Name in return View();
 
+
 Routing
 -------
 App_Start / RouteConfig.cs
@@ -24,8 +25,14 @@ App_Start / RouteConfig.cs
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 	
+	Edited version:
 	
-	
+	routes.MapRoute(
+                name: "FillForm",
+                url: "Customer/Fill/{id}",
+                defaults: new { controller = "Customer", action = "FillCustomer", id = UrlParameter.Optional }
+            );
+			
 	"routes.IgnoreRoute" we can put what we want to be ignored
 	
 	routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -173,9 +180,102 @@ Display View
 	</div>
 
 	
-Display View
-------------
 
+	
+
+HTML Helpers
+------------
+	https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/views/creating-custom-html-helpers-cs
+	http://www.tutorialsteacher.com/mvc/htmlhelper-textbox-textboxfor
+	
+	HtmlHelper class generates html elements using the model class object in razor view. 
+	It binds the model object to html elements to display value of model properties into html elements 
+	and also assigns the value of the html elements to the model properties while submitting web form. 
+	So always use HtmlHelper class in razor view instead of writing html tags manually.
+	
+	@Html is an object of HtmlHelper class . (@ symbol is used to access server side object in razor syntax). 
+	Html is a property of type HtmlHelper included in base class of razor view WebViewPage. 
+	ActionLink() and DisplayNameFor() is extension methods included in HtmlHelper class.
+	HtmlHelper extension method generates html elements based on model properties.
+	
+	For example, @Html.ActionLink("Create New", "Create", "Controller") would generate 
+	anchor tag <a href="/Controller/Create">Create New</a>.
+	
+	
+	HtmlHelper						Strogly Typed HtmlHelpers		Html Control
+	----------				        ------------------------- 		------------
+	Html.ActionLink					Anchor link
+	Html.TextBox					Html.TextBoxFor					Textbox
+	Html.TextArea					Html.TextAreaFor				TextArea
+	Html.CheckBox					Html.CheckBoxFor				Checkbox
+	Html.RadioButton				Html.RadioButtonFor				Radio button
+	Html.DropDownList				Html.DropDownListFor			Dropdown, combobox
+	Html.ListBox					Html.ListBoxFor					multi-select list box
+	Html.Hidden						Html.HiddenFor					Hidden field
+	Password						Html.PasswordFor				Password textbox
+	Html.Display					Html.DisplayFor					Html text
+	Html.Label						Html.LabelFor					Label
+	Html.Editor						Html.EditorFor					Generates Html controls based 
+																	on data type of specified model 
+																	property e.g. textbox for string 
+																	property, numeric field for int, 
+																	double or other numeric type.
+	
+	
+	The difference between calling the HtmlHelper methods and using an html tags is that 
+	the HtmlHelper method is designed to make it easy to bind to view data or model data.
+
+
+	
+Example with loosly typed TextBox:
+----------------------------------
+	
+Models
+------
+
+	namespace InputScreenMVC.Models
+	{
+		public class Customer
+		{
+			public int Id { get; set; }
+			public string CustomerCode { get; set; }
+			public double Amount { get; set; }
+		}
+	}
+	
+Views / FillCustomer
+--------------------
+
+	@model InputScreenMVC.Models.Customer
+
+
+	<body>
+
+		@using (Html.BeginForm("DisplayCustomer", "Customer", FormMethod.Post))
+		{
+			
+			@Html.Label("CustomerId", "Enter Customer Id")
+			@Html.TextBox("CustomerId", Model, new { @class = "form-control" })
+			<br />
+			@Html.Label("CustomerCode", "Enter Customer Code")
+			@Html.TextBox("CustomerCode", Model, new { @class = "form-control" })
+			<br />
+			@Html.Label("Amount", "Enter Customer Amount")
+			@Html.TextBox("Amount", Model, new { @class = "form-control" })
+			<br />
+			
+			<input type="submit" class="btn btn-info" value="Click to Submit">
+
+		}
+
+	</body>
+
+
+Views / DisplayCustomer
+-----------------------	
+
+	@model InputScreenMVC.Models.Customer
+	
 	<div>
 		
 		Customer Id is: @Model.Id<br/>
@@ -193,45 +293,107 @@ Display View
 
 	</div>
 	
+	<div>
+		@Html.ActionLink("Back", "FillCustomer", "Customer", new {@class="btn btn-primary btn-large"})
+	</div>
 
-HTML Helpers
-------------
-	http://www.tutorialsteacher.com/mvc/htmlhelper-textbox-textboxfor
-	
-	HtmlHelper class generates html elements using the model class object in razor view. 
-	It binds the model object to html elements to display value of model properties into html elements 
-	and also assigns the value of the html elements to the model properties while submitting web form. 
-	So always use HtmlHelper class in razor view instead of writing html tags manually.
-	
-	@Html is an object of HtmlHelper class . (@ symbol is used to access server side object in razor syntax). 
-	Html is a property of type HtmlHelper included in base class of razor view WebViewPage. 
-	ActionLink() and DisplayNameFor() is extension methods included in HtmlHelper class.
-	HtmlHelper extension method generates html elements based on model properties.
-	
-	For example, @Html.ActionLink("Create New", "Create") would generate 
-	anchor tag <a href="/Somemodel/Create">Create New</a>.
-	
-	
-	HtmlHelper				Strogly Typed HtmlHelpers		Html Control
-	----------         		------------------------- 		------------
-	Html.ActionLink			Anchor link
-	Html.TextBox			Html.TextBoxFor					Textbox
-	Html.TextArea			Html.TextAreaFor				TextArea
-	Html.CheckBox			Html.CheckBoxFor				Checkbox
-	Html.RadioButton		Html.RadioButtonFor				Radio button
-	Html.DropDownList		Html.DropDownListFor			Dropdown, combobox
-	Html.ListBox			Html.ListBoxFor					multi-select list box
-	Html.Hidden				Html.HiddenFor					Hidden field
-	Password				Html.PasswordFor				Password textbox
-	Html.Display			Html.DisplayFor					Html text
-	Html.Label				Html.LabelFor					Label
-	Html.Editor				Html.EditorFor					Generates Html controls based 
-															on data type of specified model 
-															property e.g. textbox for string 
-															property, numeric field for int, 
-															double or other numeric type.
-	
-	
-	The difference between calling the HtmlHelper methods and using an html tags is that 
-	the HtmlHelper method is designed to make it easy to bind to view data or model data.
 
+Controller / CustomerController
+-------------------------------	
+		
+		[HttpPost]
+        public ActionResult DisplayCustomer(Customer obj)
+        {
+            return View(obj);
+        }
+		
+Summary
+-------
+
+	1. Html Helper class creates Html elements.
+	2. Submit button Calls DisplayCustomer Action in CustomController.
+	3. DisplayCustomer Action takes as a parameter Customer object that 
+	   was created using Html Helper Class and pass it to the View.
+		
+
+Example with strongly typed TextBoxFor and lambda:
+--------------------------------------------------		
+
+ @using (Html.BeginForm("DisplayCustomer", "Customer", FormMethod.Post))
+    {
+
+        @Html.Label("Id", "Enter Customer Id")
+        @Html.TextBoxFor(x=>x.Id, new { @class = "form-control" })
+        <br />
+        @Html.Label("CustomerCode", "Enter Customer Code")
+        @Html.TextBoxFor(x => x.CustomerCode, new { @class = "form-control" })
+        <br />
+        @Html.Label("Amount", "Enter Customer Amount")
+        @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+        <br />
+        
+        <input type="submit" class="btn btn-info" value="Click to Submit">
+
+    }
+		
+====================
+
+public class CustomerController : Controller
+    {
+       
+        private List<Customer> Customers = new List<Customer>();
+
+        public CustomerController()
+        {
+            Customer obj1 = new Customer();
+            obj1.Id = 11;
+            obj1.CustomerCode = "101";
+            obj1.Amount = 11.11;
+
+            Customers.Add(obj1);
+
+            obj1 = new Customer();
+            obj1.Id = 22;
+            obj1.CustomerCode = "202";
+            obj1.Amount = 22.22;
+
+            Customers.Add(obj1);
+
+        }
+
+        //public CustomerController()
+
+        //{
+        //    Customer obj1 = new Customer();
+        //    obj1.Id = 11;
+        //    obj1.CustomerCode = "101";
+        //    obj1.Amount = 11.11;
+
+        //    Customers.Add(obj1);
+
+        //    Customer obj2 = new Customer();
+        //    obj2.Id = 22;
+        //    obj2.CustomerCode = "202";
+        //    obj2.Amount = 22.22;
+
+        //    Customers.Add(obj2);
+
+        //}
+
+    public ActionResult FillCustomer()
+        {
+            return View();
+        }
+        //[HttpPost]
+        public ActionResult DisplayCustomer(int Id)
+        {
+            Customer objCustomer = Customers[Id];
+           return View("DisplayCustomer", objCustomer);
+        }
+    }
+	
+	
+	routes.MapRoute(
+                name: "Show",
+                url: "Customer/Display/{id}",
+                defaults: new { controller = "Customer", action = "DisplayCustomer", id=0});

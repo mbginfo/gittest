@@ -1,0 +1,40 @@
+﻿@*@using System.Web.Razor.Parser.SyntaxTree
+
+@{
+    Layout = null;
+}*@
+@model InputScreenMVC.Models.Customer
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DisplayCustomer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div>
+    
+    Customer Id is: @Model.Id<br/>
+    Customer Code is: @Model.CustomerCode <br/>
+    @if (Model.Amount > 100)
+    {
+        <span>This is VIP Customer and Amount is:</span>
+        <span>@Model.Amount</span>
+    }
+    
+    else
+    {
+        <span>This is usual Customer and Amount is:</span>
+        <span>@Model.Amount</span>
+    }
+
+</div>
+<div>
+    @Html.ActionLink("Back", "FillCustomer", "Customer", new {@class="btn btn-primary btn-large"})
+</div>
+
+</body>
+</html>

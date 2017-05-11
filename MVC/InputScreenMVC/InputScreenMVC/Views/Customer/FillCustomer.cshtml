@@ -1,0 +1,38 @@
+﻿
+@model InputScreenMVC.Models.Customer
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FillCustomer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    @using (Html.BeginForm("DisplayCustomer", "Customer", FormMethod.Post))
+    {
+
+        @Html.Label("Id", "Enter Customer Id")
+        @Html.TextBox("Id", Model, new { @class = "form-control" })
+        <br />
+        @Html.Label("CustomerCode", "Enter Customer Code")
+        @Html.TextBox("CustomerCode", Model, new { @class = "form-control" })
+        <br />
+        @Html.Label("Amount", "Enter Customer Amount")
+        @Html.TextBox("Amount", Model, new { @class = "form-control" })
+        <br />
+			
+        <input type="submit" class="btn btn-info" value="Click to Submit">
+
+    }
+
+</body>
+</html>

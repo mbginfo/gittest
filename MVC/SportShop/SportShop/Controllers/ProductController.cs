@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SportShop.DAL;
+using SportShop.Entities;
 using SportShop.Models;
 using SportShop.Repositories;
 
@@ -10,6 +12,7 @@ namespace SportShop.Controllers
 {
     public class ProductController : Controller
     {
+        //Dipendency injection
         private readonly IProductRepository _repository; 
 
         public ProductController(IProductRepository repository)
@@ -25,6 +28,17 @@ namespace SportShop.Controllers
 
         public ActionResult List()
         {
+            // tests connection
+            //using (var db = new SportShopContext())
+            //{
+            //    var customer = new Customer
+            //    {
+            //        Email = "test@test"
+            //    };
+            //    db.Customers.Add(customer);
+            //    db.SaveChanges();
+            //}
+
             var items = _repository.Getproducts();
 
             var model = new ProductGridModel //2

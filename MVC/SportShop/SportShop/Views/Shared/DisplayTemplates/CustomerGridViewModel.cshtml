@@ -1,0 +1,7 @@
+﻿@model SportShop.Models.CustomerGridViewModel
+
+<tr>
+    <th>@Model.Name</th>
+    <th>@Html.ActionLink(Model.Name, "CustomerList", "Customer", new { Name = Model.Name }, null)</th>
+
+</tr>

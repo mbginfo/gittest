@@ -15,8 +15,9 @@ namespace SportShop
     {
         private static IWindsorContainer _container;
 
-        private static void BootstrapContainer()
+       private static void BootstrapContainer()
         {
+            //Configuracja kontenera // twirzy kontener(Worek)
             _container = new WindsorContainer().Install(FromAssembly.This());
             var controllerFactory = new WindsorConrtollerFactory(_container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);

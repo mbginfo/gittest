@@ -17,30 +17,30 @@ namespace SportShop.Repositories
                 new ProductGridViewModel
                 {
                     Id = 1,
-                    Name = "Product pierwszy",
+                    Name = "Produkt pierwszy",
                     Price = 10
                 },
 
                 new ProductGridViewModel
                 {
                     Id = 2,
-                    Name = "Product drugi",
+                    Name = "Produkt drugi",
                     Price = 20
                 },
 
                 new ProductGridViewModel
                 {
                     Id = 3,
-                    Name = "Product Trzeci",
+                    Name = "Produkt Trzeci",
                     Price = 30
                 },
             };
 
         }
 
-        public ProductDetailsViewModel Get(long id)
+        public ProductGridViewModel Get(long id)
         {
-            return new ProductDetailsViewModel
+            return new ProductGridViewModel()
             {
                 Id = 1,
                 Name = "Nowy",
@@ -48,5 +48,9 @@ namespace SportShop.Repositories
             };
         }
 
+        public void Add(ProductAddViewModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

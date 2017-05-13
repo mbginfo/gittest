@@ -6,6 +6,7 @@ using Castle.Core.Configuration;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using SportShop.DAL;
 using SportShop.Repositories;
 
 namespace SportShop.Infrastructure
@@ -14,8 +15,16 @@ namespace SportShop.Infrastructure
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            //container.Register(Component.For<IProductRepository>
+            //    ().ImplementedBy<ProductInMemoryRepository>());
+
             container.Register(Component.For<IProductRepository>
-                ().ImplementedBy<ProductInMemoryRepository>());
+                ().ImplementedBy<ProductRepository>());
+
+            container.Register(Component.For<SportShopContext>());
+
+            container.Register(Component.For<ICustomerRepository>
+                ().ImplementedBy<CustomerInMemoryRepository>());
         }
 
      }

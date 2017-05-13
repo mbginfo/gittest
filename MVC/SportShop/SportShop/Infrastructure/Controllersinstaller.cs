@@ -14,6 +14,7 @@ namespace SportShop.Infrastructure
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
+            //Wszamy wszystke kontrolery do Kontenera
             container.Register(Classes.FromThisAssembly().BasedOn<IController>().LifestyleTransient());
         }
         

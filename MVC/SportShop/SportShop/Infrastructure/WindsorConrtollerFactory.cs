@@ -9,7 +9,7 @@ using Castle.MicroKernel;
 
 namespace SportShop.Infrastructure
 {
-    
+    //tworzy obikt przez pobranie kontenera // Pobiera kontrolery uziwanc kontenera
     public class WindsorConrtollerFactory : DefaultControllerFactory
     {
 

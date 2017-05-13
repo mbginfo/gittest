@@ -2,7 +2,10 @@
 
 <tr>
     <th>@Model.Id</th>
-    <th>@Html.ActionLink(Model.Name, "GetProduct", "Product", new {productId = Model.Id}, null)</th>
+    <th>@Model.Name</th>
     <th>@Model.Price.ToString("c")</th>
+    <th>@Model.CategoryName</th>
+    <th>@Model.Description</th>
+    <th>@Html.ActionLink(Model.Name, "GetProduct", "Product", new { productId = Model.Id }, null)</th>
 </tr>
 

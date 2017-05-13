@@ -10,7 +10,13 @@ namespace SportShop.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductRepository _repository = new ProductInMemoryRepository();
+        private readonly IProductRepository _repository; 
+
+        public ProductController(IProductRepository repository)
+        {
+            _repository = repository;
+        }
+
         // GET: Product
         public ActionResult Index()
         {
@@ -56,9 +62,7 @@ namespace SportShop.Controllers
         }
 
 
-
-
-
+        
     }
 
     public class ProductGridModel //2

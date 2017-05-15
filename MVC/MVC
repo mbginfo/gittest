@@ -202,24 +202,24 @@ HTML Helpers
 	anchor tag <a href="/Controller/Create">Create New</a>.
 	
 	
-	HtmlHelper						Strogly Typed HtmlHelpers		Html Control
-	----------				        ------------------------- 		------------
-	Html.ActionLink					Anchor link
-	Html.TextBox					Html.TextBoxFor					Textbox
-	Html.TextArea					Html.TextAreaFor				TextArea
-	Html.CheckBox					Html.CheckBoxFor				Checkbox
-	Html.RadioButton				Html.RadioButtonFor				Radio button
-	Html.DropDownList				Html.DropDownListFor			Dropdown, combobox
-	Html.ListBox					Html.ListBoxFor					multi-select list box
-	Html.Hidden						Html.HiddenFor					Hidden field
-	Password						Html.PasswordFor				Password textbox
-	Html.Display					Html.DisplayFor					Html text
-	Html.Label						Html.LabelFor					Label
-	Html.Editor						Html.EditorFor					Generates Html controls based 
-																	on data type of specified model 
-																	property e.g. textbox for string 
-																	property, numeric field for int, 
-																	double or other numeric type.
+	HtmlHelper				Strogly Typed HtmlHelpers		Html Control
+	----------				------------------------- 		------------
+	Html.ActionLink			Anchor link
+	Html.TextBox			Html.TextBoxFor					Textbox
+	Html.TextArea			Html.TextAreaFor				TextArea
+	Html.CheckBox			Html.CheckBoxFor				Checkbox
+	Html.RadioButton		Html.RadioButtonFor				Radio button
+	Html.DropDownList		Html.DropDownListFor			Dropdown, combobox
+	Html.ListBox			Html.ListBoxFor					multi-select list box
+	Html.Hidden				Html.HiddenFor					Hidden field
+	Password				Html.PasswordFor				Password textbox
+	Html.Display			Html.DisplayFor					Html text
+	Html.Label				Html.LabelFor					Label
+	Html.Editor				Html.EditorFor					Generates Html controls based 
+																on data type of specified model 
+																property e.g. textbox for string 
+																property, numeric field for int, 
+																double or other numeric type.
 	
 	
 	The difference between calling the HtmlHelper methods and using an html tags is that 

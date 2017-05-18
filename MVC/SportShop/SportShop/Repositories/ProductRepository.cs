@@ -18,16 +18,13 @@ namespace SportShop.Repositories
         {
             _context = context;
         }
+
         public IEnumerable<ProductGridViewModel> Getproducts()
         {
             return _context.Products.Select(x => new ProductGridViewModel()
             {
-                CategoryName = x.Category.Name,
-                Description = x.Description,
-                Id = x.Id,
-                Name = x.Name,
-                Price = x.Price
-            }).ToList();
+                Name = x.Id + " " + x.Name
+            });
         }
 
         public ProductGridViewModel Get(long id)
@@ -45,6 +42,22 @@ namespace SportShop.Repositories
         public void Add(ProductAddViewModel model)
         {
 
+            var product = new Product()
+            {
+
+                Name = model.Name,
+                Description = model.Description,
+                Price = model.Price,
+                Category = _context.Categories.Single(x => x.Id == model.CategoryId)
+
+            };
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+        }
+
+        public void Save(ProductAddViewModel model)
+        {
             var product = new Product()
             {
 

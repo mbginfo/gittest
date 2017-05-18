@@ -1,0 +1,72 @@
+https://angular.io/docs/ts/latest/cli-quickstart.html
+
+
+	Verify that we are running at least node 6.9.x and npm 3.x.x 
+	by running node -v and npm -v in a terminal/console window.
+
+	Update npm: npm install npm@latest -g
+
+
+
+Installation
+------------
+
+1. Install the Angular CLI globally.
+
+	npm install -g @angular/cli
+
+2. Create a new project
+
+	ng new my-app
+
+3. Go to the project directory and launch the server.
+
+	cd my-app
+
+	ng serve --open
+
+
+Checking installed version
+-----------------------
+
+	ng --version
+
+
+Unintsallation
+--------------
+
+	npm uninstall -g @angular/cli
+	
+	npm cache clean
+
+
+Possible errors
+---------------
+
+	1. After I run ng server and go http://localhost:4200 using IE 11, it always showing "loading..." instead of "app works!"
+
+	Solution
+	--------
+
+		Angular 2 not working in IE 9 - 11.
+
+		http://stackoverflow.com/questions/43667829/angular-cli-title-did-not-show-app-works
+
+	2. npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^1.0.0 (node_modules/chokidar/node_modules/fsevents):
+	   15:10:15 npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.0.15: wanted {"os":"darwin","arch":"any"} 
+	   (current: {"os":"linux","arch":"x64"})
+
+	Solution
+	--------
+
+	   it is just a warning not an error
+
+
+	3. You cannot use the new command inside an angular-cli project.
+
+	Solution
+	--------
+ 		
+		package.json has to be deleted.
+
+		https://github.com/angular/angular-cli/issues/2818

@@ -1,0 +1,38 @@
+﻿@using SportShop.Entities
+@model SportShop.Models.ProductAddViewModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="row">
+    @using (Html.BeginForm("Add"))
+    {
+        <div class="col-xs-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, "Nazwa")
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Price, "Cena")
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, "Description")
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Description)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.CategoryId, "Kategoria")
+                @Html.DropDownListFor(m => m.CategoryId,
+                    new SelectList(Category),
+                    "Kategoria")
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+        </div>
+    }
+
+</div>
+

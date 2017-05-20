@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,6 +41,28 @@ namespace SportShop.Controllers
         //    return View(model);
         //}
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var model = new AddCustomerViewModel();
+
+           
+                return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Add(AddCustomerViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Save(model);
+                return RedirectToAction("CustomerList");
+            }
+
+            return View(model);
+        }
+
+        
     }
 
     public class CustomerGridModel

@@ -20,20 +20,7 @@ namespace SportShop.Repositories
                     Name = "Produkt pierwszy",
                     Price = 10
                 },
-
-                new ProductGridViewModel
-                {
-                    Id = 2,
-                    Name = "Produkt drugi",
-                    Price = 20
-                },
-
-                new ProductGridViewModel
-                {
-                    Id = 3,
-                    Name = "Produkt Trzeci",
-                    Price = 30
-                },
+                
             };
 
         }
@@ -48,7 +35,12 @@ namespace SportShop.Repositories
             };
         }
 
-        public void Add(ProductAddViewModel model)
+        //public void Add(ProductAddViewModel model)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public void Save(ProductAddViewModel model)
         {
             throw new NotImplementedException();
         }

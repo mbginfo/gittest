@@ -16,22 +16,15 @@ namespace SportShop.Repositories
         {
             new CustomerGridViewModel
             {
-                Name = "Klient pierwszy",
-            },
-
-            new CustomerGridViewModel
-
-            {
-                Name = "Klient drugi",
-            },
-
-            new CustomerGridViewModel
-
-            {
-                Name = "Klient Trzeci",
-            },
+                Name = "Pierwszy"
+            }
         };
 
     }
+
+        public void Save(AddCustomerViewModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

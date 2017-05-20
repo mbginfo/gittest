@@ -56,27 +56,51 @@ namespace SportShop.Controllers
         public ActionResult GetProduct(long productId)
         {
             
-            var model = _repository.Get(productId);
+            var model = _repository.Getproducts();
             return View(model);
         }
 
         [HttpPost]
         public ActionResult GetProduct(ProductDetailsViewModel model)
         {
-            if (model.Price % 4 != 0)
-            {
-                ModelState.AddModelError(nameof(ProductDetailsViewModel.Price), "zla wartosc");
-            }
+            var productItems = _repository.Getproducts();
 
+            return View(productItems);
+            //if (model.Price % 4 != 0)
+            //{
+            //    ModelState.AddModelError(nameof(ProductDetailsViewModel.Price), "zla wartosc");
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    return RedirectToAction("List");
+            //}
+            //return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var model = new ProductAddViewModel();
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Add(ProductAddViewModel model)
+        {
             if (ModelState.IsValid)
             {
+                _repository.Save(model);
                 return RedirectToAction("List");
             }
+
             return View(model);
         }
 
 
-        
+
     }
 
     public class ProductGridModel //2

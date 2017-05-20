@@ -1,0 +1,44 @@
+
+prop tab = class propertises
+Ctrl+Tab = Navigate in Visula Studio
+Ctrl+Shift+b  = bild app
+Alt+tab = Back to browser
+F2 = to rename all references
+mvcaction4 = snippetfor action result
+
+
+	return Content("Hello World");
+	
+	return HttpNotFound();
+	
+	return new EmptyResult();
+	
+	return RedirectToAction("Index", "Home", new {page = 1, sortBy = "name"});
+	
+	
+	public ActionResult Random()
+	{
+		var movie = new Movie {Name = "Shrek!"};
+		return View(movie);
+		
+	}
+
+	public ActionResult Edit(int id)
+	{
+		return Content("Id=" + id);
+	}
+
+	public ActionResult Index(int? pageIndex, string sortBy)
+	{
+		if (!pageIndex.HasValue)
+		{
+			pageIndex = 1;
+		}
+
+		if (String.IsNullOrWhiteSpace(sortBy))
+		{
+			sortBy = "Name";
+		}
+
+		return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+	}

@@ -1,7 +1,16 @@
 ﻿@model SportShop.Models.CustomerGridViewModel
 
 <tr>
-    <th>@Model.Name</th>
-    <th>@Html.ActionLink(Model.Name, "CustomerList", "Customer", new { Name = Model.Name }, null)</th>
-
+    <td>@Model.Name</td>
+   
+    <td>@Html.ActionLink("Edit", "Edit", "Customer", new { id = Model.Id }, new {@class="btn btn-warning"})
+        @using (Html.BeginForm("Delete", "Customer"))
+        {
+            <input type="hidden" name="id" value="@Model.Id" id="id"/>
+            <button type="submit" value="Zapisz">Zapisz</button>
+        }
+    
+    </td>
+    
+   
 </tr>

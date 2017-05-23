@@ -12,7 +12,7 @@ namespace SportShop.Repositories
     {
         private readonly SportShopContext _dbContext;
 
-        public CustomerRepository(SportShopContext dbContext)
+        public CategoryRepository(SportShopContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -20,11 +20,27 @@ namespace SportShop.Repositories
         {
             return _dbContext.Customers.Select(p => new CustomerGridViewModel
             {
-                Name = p.Name + " " + p.lastName
+                Name = p.Name + " " + p.lastName,
+                Id = p.Id
             });
         }
 
         public void Save(AddCustomerViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public EditCustomerViewModel Get(long Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(EditCustomerViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(long id)
         {
             throw new NotImplementedException();
         }

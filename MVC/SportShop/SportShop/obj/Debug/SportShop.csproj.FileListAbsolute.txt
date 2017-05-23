@@ -239,6 +239,6 @@ C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\bin\EntityFramework.SqlSer
 C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.csprojResolveAssemblyReference.cache
 C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.dll
 C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.pdb
+C:\Users\RENT\Desktop\gittest\MVC\SportShop\SportShop\obj\Debug\SportShop.csprojResolveAssemblyReference.cache

@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SportShop.Entities;
 using SportShop.Models;
 using SportShop.Repositories;
 
@@ -46,7 +47,6 @@ namespace SportShop.Controllers
         {
             var model = new AddCustomerViewModel();
 
-           
                 return View(model);
         }
 
@@ -62,7 +62,36 @@ namespace SportShop.Controllers
             return View(model);
         }
 
-        
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var model = _repository.Get(id);
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditCustomerViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _repository.Update(model);
+                return RedirectToAction("CustomerList");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete (long id)
+        {
+            _repository.Delete(id);
+           
+            return RedirectToAction("CustomerList");
+
+        }
+
+
     }
 
     public class CustomerGridModel

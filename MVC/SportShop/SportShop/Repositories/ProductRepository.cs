@@ -71,5 +71,8 @@ namespace SportShop.Repositories
             _context.Products.Add(product);
             _context.SaveChanges();
         }
+
+       
+
     }
 }
